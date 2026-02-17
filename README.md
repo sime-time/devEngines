@@ -1,9 +1,12 @@
-The following is an API mockup, the code for it is not fully implemented.
+
+## WIP
+
+> The following is an API mockup, the code for it is not fully implemented.
 
 
 # devEngines CLI
 
-This tool, devEngines CLI, makes it impossible for you to be on the wrong Node or npm version. With it installed, any time you are in a project that has the Node or npm version defined in the `package.json`, it will switch to that version automatically. You never have to run any commands, just set the value in the official "devEngines" part of the `package.json`. This location is defined in the official `package.json` specification. If you want to pin a specific version number, or update to the latest version of a tool, the `devEngines` CLI offers the following commands.
+This tool, devEngines CLI, makes it impossible for you to be on the wrong Node or npm version. With it installed, any time you are in a project that has the Node or npm version defined in the `package.json`, it will switch to that version automatically. You never have to run any commands, just set the value in the official "[devEngines](https://docs.npmjs.com/cli/v11/configuring-npm/package-json#devengines)" part of the `package.json`. This location is defined in the official `package.json` specification. If you want to pin a specific version number, or update to the latest version of a tool, the `devEngines` CLI offers the following commands.
 
 
 ## CLI Commands

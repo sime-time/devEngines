@@ -3,9 +3,18 @@ import { join } from 'node:path';
 
 const __dirname = import.meta.dirname;
 
-export const getCliVersion = function () {
+/**
+ * Returns the version number defined in the devEngines CLI package.json.
+ *
+ * @param  {boolean} forceThrow  Only used for test coverage
+ * @return {string}              The version number or error message
+ */
+export const getCliVersion = function (forceThrow) {
   let version;
   try {
+    if (forceThrow) {
+      throw 'error';
+    }
     const manifestPath = join(__dirname, '..', 'package.json');
     const manifestData = readFileSync(manifestPath);
     const manifest = JSON.parse(manifestData);

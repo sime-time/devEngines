@@ -4,7 +4,15 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "vitest run --coverage",
+    "unit": "vitest --coverage"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.0.18",
+    "vitest": "^4.0.18"
   },
   "repository": {
     "type": "git",

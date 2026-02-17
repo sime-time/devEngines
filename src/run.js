@@ -9,16 +9,18 @@ import { showHelpMenu } from './helpMenu.js';
  */
 const updateTool = function (tool, arg) {
   if (!arg.includes('@') || !arg.split('@')[1]) {
-    console.log('Missing ' + tool + ' version, try:');
-    console.log('devEngines [toolname]@[version]');
-    console.log('Like this:');
-    console.log('devEngines ' + tool.toLowerCase() + '@latest');
+    console.log([
+      'Missing ' + tool + ' version, try:',
+      'devEngines [toolname]@[version]',
+      'Like this:',
+      'devEngines ' + tool.toLowerCase() + '@latest'
+    ].join('\n'));
   } else {
     console.log('Pin local ' + tool + ' to ' + arg.split('@')[1]);
   }
 }
 
-const updateAllTools = function (arg) {
+export const updateAllTools = function (arg) {
   if (arg === 'lts') {
     console.log('Pin local to LTS');
   } else if (arg === 'latest') {
@@ -33,6 +35,7 @@ const updateAllTools = function (arg) {
  * @param {string}  arg       The command line argument provided by the user
  */
 export const run = function (isGlobal, arg) {
+  arg = arg || '';
   if (isGlobal) {
     if (!arg) {
       console.log('Missing an argument after -g');

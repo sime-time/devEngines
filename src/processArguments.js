@@ -27,8 +27,8 @@ export const argumentProcessing = function () {
       argument.includes('devEngines\\index.js')
     );
   });
-  const startingIndex = preIndex + 1;
 
+  const startingIndex = preIndex + 1;
   args = args.slice(startingIndex);
   let first = cleanArgument(args[0]);
   const second = cleanArgument(args[1]);

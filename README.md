@@ -26,6 +26,7 @@ JavaScript tooling management.
 * **Focused**
   * Exclusively supports JavaScript tooling.
   * Streamlined CLI API.
+* **100% Test Coverage**
 
 
 ## CLI Commands

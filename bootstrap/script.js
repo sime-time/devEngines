@@ -25,7 +25,7 @@ const __dirname = import.meta.dirname;
 function getNodeVersion () {
   const packageJsonPath = path.join(__dirname, '..', 'package.json');
   const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
-  return packageJson.devEngines.runtime.version;
+  return packageJson.devEngines.runtime[0].version;
 }
 
 /**

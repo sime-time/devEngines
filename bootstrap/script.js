@@ -15,15 +15,7 @@ import {
 import { arch, homedir, platform } from 'node:os';
 import path from 'node:path';
 
-/**
- * Get the root directory where devEngines is installed.
- *
- * @return {string} Root directory path
- */
-function getRootDir () {
-  // import.meta.dir is this bootstrap/ folder so go one level up
-  return path.join(import.meta.dir, '..');
-}
+const __dirname = import.meta.dirname;
 
 /**
  * Read the Node.js version required for devEngines from package.json.
@@ -31,7 +23,7 @@ function getRootDir () {
  * @return {string} Node version example: '25.6.1'
  */
 function getNodeVersion () {
-  const packageJsonPath = path.join(getRootDir(), 'package.json');
+  const packageJsonPath = path.join(__dirname, '..', 'package.json');
   const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
   return packageJson.devEngines.runtime.version;
 }
@@ -130,13 +122,14 @@ function createShims () {
   const osForUrl = os === 'win32' ? 'win' : os;
 
   const nodeBinDir = path.join(
-    getRootDir(),
+    __dirname,
+    '..',
     'internal-node',
     `node-v${version}-${osForUrl}-${architecture}`,
     'bin'
   );
 
-  const shimsDir = path.join(getRootDir(), 'shims');
+  const shimsDir = path.join(__dirname, '..', 'shims');
   mkdirSync(shimsDir, { recursive: true });
   const tools = ['node', 'npm', 'npx'];
   for (const tool of tools) {
@@ -159,7 +152,7 @@ function createShims () {
  */
 function addShimsToPath () {
   const os = platform();
-  const shimsDir = path.join(getRootDir(), 'shims');
+  const shimsDir = path.join(__dirname, '..', 'shims');
 
   if (os === 'win32') {
     console.log('Windows implementation not complete. Returning.');
@@ -257,8 +250,8 @@ async function install () {
   const ext = os === 'win32' ? 'zip' : 'tar.gz';
 
   // Create directories
-  const cacheDir = path.join(getRootDir(), 'cache');
-  const internalNodeDir = path.join(getRootDir(), 'internal-node');
+  const cacheDir = path.join(__dirname, '..', 'cache');
+  const internalNodeDir = path.join(__dirname, '..', 'internal-node');
   mkdirSync(cacheDir, { recursive: true });
   mkdirSync(internalNodeDir, { recursive: true });
 
